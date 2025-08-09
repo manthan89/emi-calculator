@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan EMI Calculator - India</title>
+    <meta name="description" content="Free online Loan EMI calculator for India. Calculate EMI per month, total interest, and total payment instantly in English, Hindi, and Marathi.">
+    <meta name="keywords" content="EMI calculator India, loan EMI, personal loan, home loan, car loan, finance, interest rate, भारतीय ईएमआई कैलकुलेटर, कर्ज, महाराष्ट्र">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; padding: 0;
+            background: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background: #1976d2;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+        main {
+            max-width: 600px;
+            margin: auto;
+            padding: 1rem;
+        }
+        label {
+            display: block;
+            margin-top: 1rem;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 0.6rem;
+            margin-top: 0.3rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        button {
+            background: #1976d2;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #125ca1;
+        }
+        .result {
+            background: #fff;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .section {
+            background: #fff;
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 1rem;
+            background: #eee;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1 id="titleText">Loan EMI Calculator</h1>
+    <select id="languageSwitcher">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+    </select>
+</header>
+
+<main>
+    <!-- AdSense Placeholder -->
+    <!-- <div style="text-align:center; margin:20px 0;">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-xxxxxxxxxx"
+            data-ad-slot="xxxxxxx"
+            data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div> -->
+
+    <label id="loanAmountLabel">Loan Amount (₹):</label>
+    <input type="number" id="loanAmount" placeholder="Enter amount">
+
+    <label id="interestRateLabel">Annual Interest Rate (%):</label>
+    <input type="number" step="0.01" id="interestRate" placeholder="Enter rate">
+
+    <label id="tenureLabel">Loan Tenure:</label>
+    <input type="number" id="tenure" placeholder="Enter number">
+
+    <label id="tenureTypeLabel">Tenure Type:</label>
+    <select id="tenureType">
+        <option value="months">Months</option>
+        <option value="years">Years</option>
+    </select>
+
+    <button id="calculateBtn">Calculate EMI</button>
+
+    <div class="result">
+        <p id="emiResult">EMI per month: ₹0</p>
+        <p id="interestResult">Total Interest: ₹0</p>
+        <p id="totalPaymentResult">Total Payment: ₹0</p>
+    </div>
+
+    <div class="section">
+        <h2 id="howToUseTitle">How to Use</h2>
+        <p id="howToUseText">Enter your loan details, select tenure type, and click ‘Calculate EMI’ to see results.</p>
+    </div>
+
+    <div class="section">
+        <h2 id="aboutTitle">About</h2>
+        <p id="aboutText">This free EMI calculator helps you estimate your monthly loan payment for personal loans, home loans, car loans, and more across India.</p>
+    </div>
+</main>
+
+<footer>
+    &copy; 2025 Loan EMI Calculator - India
+</footer>
+
+<script>
+    // Translations
+    const translations = {
+        en: {
+            title: "Loan EMI Calculator",
+            loanAmount: "Loan Amount (₹):",
+            interestRate: "Annual Interest Rate (%):",
+            tenure: "Loan Tenure:",
+            tenureType: "Tenure Type:",
+            months: "Months",
+            years: "Years",
+            calculate: "Calculate EMI",
+            emi: "EMI per month: ₹",
+            interest: "Total Interest: ₹",
+            payment: "Total Payment: ₹",
+            howToUseTitle: "How to Use",
+            howToUseText: "Enter your loan details, select tenure type, and click ‘Calculate EMI’ to see results.",
+            aboutTitle: "About",
+            aboutText: "This free EMI calculator helps you estimate your monthly loan payment for personal loans, home loans, car loans, and more across India."
+        },
+        hi: {
+            title: "ऋण ईएमआई कैलकुलेटर",
+            loanAmount: "ऋण राशि (₹):",
+            interestRate: "वार्षिक ब्याज दर (%):",
+            tenure: "ऋण अवधि:",
+            tenureType: "अवधि प्रकार:",
+            months: "महीने",
+            years: "साल",
+            calculate: "ईएमआई गणना करें",
+            emi: "प्रति माह ईएमआई: ₹",
+            interest: "कुल ब्याज: ₹",
+            payment: "कुल भुगतान: ₹",
+            howToUseTitle: "कैसे उपयोग करें",
+            howToUseText: "ऋण विवरण दर्ज करें, अवधि प्रकार चुनें और ‘ईएमआई गणना करें’ पर क्लिक करें।",
+            aboutTitle: "हमारे बारे में",
+            aboutText: "यह मुफ्त ईएमआई कैलकुलेटर आपको व्यक्तिगत ऋण, होम लोन, कार लोन और अन्य के लिए मासिक भुगतान का अनुमान लगाने में मदद करता है।"
+        },
+        mr: {
+            title: "कर्ज ईएमआय कॅलक्युलेटर",
+            loanAmount: "कर्ज रक्कम (₹):",
+            interestRate: "वार्षिक व्याज दर (%):",
+            tenure: "कर्ज कालावधी:",
+            tenureType: "कालावधी प्रकार:",
+            months: "महिने",
+            years: "वर्षे",
+            calculate: "ईएमआय काढा",
+            emi: "दर महिना ईएमआय: ₹",
+            interest: "एकूण व्याज: ₹",
+            payment: "एकूण पेमेंट: ₹",
+            howToUseTitle: "कसे वापरायचे",
+            howToUseText: "कर्जाची माहिती भरा, कालावधी प्रकार निवडा आणि ‘ईएमआय काढा’ वर क्लिक करा.",
+            aboutTitle: "आमच्याबद्दल",
+            aboutText: "हा मोफत ईएमआय कॅलक्युलेटर तुम्हाला वैयक्तिक, घर, वाहन कर्जांसाठी मासिक पेमेंटचा अंदाज लावण्यात मदत करतो."
+        }
+    };
+
+    document.getElementById("languageSwitcher").addEventListener("change", function() {
+        const lang = this.value;
+        const t = translations[lang];
+        document.getElementById("titleText").textContent = t.title;
+        document.getElementById("loanAmountLabel").textContent = t.loanAmount;
+        document.getElementById("interestRateLabel").textContent = t.interestRate;
+        document.getElementById("tenureLabel").textContent = t.tenure;
+        document.getElementById("tenureTypeLabel").textContent = t.tenureType;
+        document.getElementById("tenureType").options[0].text = t.months;
+        document.getElementById("tenureType").options[1].text = t.years;
+        document.getElementById("calculateBtn").textContent = t.calculate;
+        document.getElementById("emiResult").textContent = t.emi + "0";
+        document.getElementById("interestResult").textContent = t.interest + "0";
+        document.getElementById("totalPaymentResult").textContent = t.payment + "0";
+        document.getElementById("howToUseTitle").textContent = t.howToUseTitle;
+        document.getElementById("howToUseText").textContent = t.howToUseText;
+        document.getElementById("aboutTitle").textContent = t.aboutTitle;
+        document.getElementById("aboutText").textContent = t.aboutText;
+    });
+
+    // EMI Calculation
+    document.getElementById("calculateBtn").addEventListener("click", function() {
+        let amount = parseFloat(document.getElementById("loanAmount").value);
+        let rate = parseFloat(document.getElementById("interestRate").value);
+        let tenure = parseInt(document.getElementById("tenure").value);
+        let tenureType = document.getElementById("tenureType").value;
+        const lang = document.getElementById("languageSwitcher").value;
+        const t = translations[lang];
+
+        if (tenureType === "years") tenure = tenure * 12;
+
+        let monthlyRate = rate / 12 / 100;
+        let emi = amount * monthlyRate * Math.pow(1 + monthlyRate, tenure) / (Math.pow(1 + monthlyRate, tenure) - 1);
+        let totalPayment = emi * tenure;
+        let totalInterest = totalPayment - amount;
+
+        document.getElementById("emiResult").textContent = t.emi + emi.toFixed(2);
+        document.getElementById("interestResult").textContent = t.interest + totalInterest.toFixed(2);
+        document.getElementById("totalPaymentResult").textContent = t.payment + totalPayment.toFixed(2);
+    });
+</script>
+</body>
+</html>
