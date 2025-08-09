@@ -1,343 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Loan EMI Calculator - India</title>
-    <meta name="description" content="Free online Loan EMI calculator for India. Calculate EMI per month, total interest, and total payment instantly in English, Hindi, and Marathi." />
-    <meta name="keywords" content="EMI calculator India, loan EMI, personal loan, home loan, car loan, finance, भारतीय ईएमआई कैलकुलेटर, कर्ज, महाराष्ट्र" />
-    <style>
-        /* Reset & typography */
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0; padding: 0;
-            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-            color: #f5f5f5;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        header {
-            background: #1e90ff;
-            padding: 1.2rem 1rem;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(30, 144, 255, 0.5);
-        }
-        header h1 {
-            margin: 0;
-            font-weight: 700;
-            font-size: 1.8rem;
-            color: #fff;
-        }
-        #languageSwitcher {
-            margin-top: 10px;
-            padding: 0.4rem;
-            border-radius: 6px;
-            border: none;
-            font-size: 1rem;
-            background: #0c71c3;
-            color: #fff;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        #languageSwitcher:hover {
-            background: #084d7a;
-        }
-        main {
-            flex-grow: 1;
-            max-width: 480px;
-            margin: 1.5rem auto 2rem;
-            background: #ffffff16;
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 1.8rem 1.5rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
-        label {
-            display: block;
-            margin-top: 1.3rem;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-        input[type=number], select {
-            width: 100%;
-            padding: 0.65rem 0.8rem;
-            margin-top: 0.4rem;
-            border-radius: 8px;
-            border: 1.5px solid #1e90ffcc;
-            font-size: 1rem;
-            color: #222;
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
-        input[type=number]:focus, select:focus {
-            border-color: #1e90ff;
-            box-shadow: 0 0 6px #1e90ffaa;
-        }
-        button {
-            margin-top: 1.8rem;
-            width: 100%;
-            background: #1e90ff;
-            border: none;
-            padding: 0.75rem 0;
-            border-radius: 8px;
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #fff;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            box-shadow: 0 4px 12px #1e90ff88;
-        }
-        button:hover {
-            background: #1266d2;
-            box-shadow: 0 6px 16px #1266d2cc;
-        }
-        .result {
-            background: #fff;
-            color: #222;
-            border-radius: 10px;
-            padding: 1rem 1.2rem;
-            margin-top: 2rem;
-            box-shadow: 0 4px 16px #0000002b;
-        }
-        .result p {
-            font-size: 1.1rem;
-            margin: 0.4rem 0;
-            font-weight: 600;
-        }
-        .section {
-            background: #ffffff22;
-            margin-top: 2rem;
-            padding: 1.4rem 1.2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 12px #00000020;
-        }
-        .section h2 {
-            margin-top: 0; 
-            font-size: 1.25rem; 
-            font-weight: 700; 
-            color: #dbe9ff;
-        }
-        .section p {
-            font-size: 0.95rem;
-            line-height: 1.4;
-            color: #cce0ffcc;
-            margin-top: 0.4rem;
-        }
-        footer {
-            background: #111f36;
-            color: #a5b8e8;
-            text-align: center;
-            padding: 1rem;
-            font-size: 0.9rem;
-            user-select: none;
-        }
-        @media (max-width: 480px){
-            main {
-                margin: 1rem 0.5rem 1.5rem;
-                padding: 1.5rem 1rem;
-            }
-            header h1 {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loan Calculators - EMI, Personal, Home, Car Loans India</title>
+  <meta name="description" content="Calculate EMI and manage your loans with multi-language support across major Indian languages." />
+  <meta name="keywords" content="EMI calculator India, personal loan, home loan, car loan, education loan, business loan, loan calculator, कर्ज, ईएमआई, कर्ज EMI, कर्ज गणना, कर्ज ऑनलाइन" />
+  <style>
+    /* Mobile-first responsive styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #f2f4f8;
+      color: #222;
+    }
+    header, footer {
+      background: #1976d2;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+    main {
+      max-width: 600px;
+      margin: auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    label, select, input, button {
+      display: block;
+      width: 100%;
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+    button {
+      background: #1976d2;
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #155a9c;
+    }
+    .result {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: #e3f2fd;
+      border-radius: 5px;
+    }
+    .lang-selector, .calculator-selector {
+      margin-top: 0.5rem;
+    }
+  </style>
 </head>
 <body>
 <header>
-    <h1 id="titleText">Loan EMI Calculator</h1>
-    <select id="languageSwitcher" aria-label="Select Language">
-        <option value="en">English</option>
-        <option value="hi">हिन्दी</option>
-        <option value="mr">मराठी</option>
-    </select>
+  <h1 id="appTitle">Loan EMI Calculators</h1>
+  <select id="langSelector" aria-label="Select Language" class="lang-selector"></select>
+  <select id="loanTypeSelector" aria-label="Select Loan Type" class="calculator-selector"></select>
 </header>
 
 <main>
-    <!-- AdSense Placeholder -->
-    <!-- <div style="text-align:center; margin:24px 0;">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-xxxxxxxxxx"
-            data-ad-slot="xxxxxxx"
-            data-ad-format="auto"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div> -->
+  <div id="calculatorContainer">
+    <!-- Calculator UI will be dynamically inserted here based on loan type -->
+  </div>
+  <div class="result" id="resultContainer" aria-live="polite" aria-atomic="true">
+    <!-- Calculation results displayed here -->
+  </div>
 
-    <label id="loanAmountLabel">Loan Amount (₹):</label>
-    <input type="number" id="loanAmount" placeholder="Enter amount" min="0" step="any" />
+  <section id="howToUseSection">
+    <h2>How to Use</h2>
+    <p id="howToUseText"></p>
+  </section>
 
-    <label id="interestRateLabel">Annual Interest Rate (%):</label>
-    <input type="number" id="interestRate" placeholder="Enter rate" min="0" max="100" step="0.01" />
-
-    <label id="tenureLabel">Loan Tenure:</label>
-    <input type="number" id="tenure" placeholder="Enter number" min="1" step="1" />
-
-    <label id="tenureTypeLabel">Tenure Type:</label>
-    <select id="tenureType">
-        <option value="months">Months</option>
-        <option value="years">Years</option>
-    </select>
-
-    <button id="calculateBtn">Calculate EMI</button>
-
-    <div class="result" role="region" aria-live="polite" aria-atomic="true" aria-label="EMI Calculation Results">
-        <p id="emiResult">EMI per month: ₹0</p>
-        <p id="interestResult">Total Interest: ₹0</p>
-        <p id="totalPaymentResult">Total Payment: ₹0</p>
-    </div>
-
-    <div class="section">
-        <h2 id="howToUseTitle">How to Use</h2>
-        <p id="howToUseText">Enter your loan details, select tenure type, and click ‘Calculate EMI’ to see results.</p>
-    </div>
-
-    <div class="section">
-        <h2 id="aboutTitle">About</h2>
-        <p id="aboutText">This free EMI calculator helps you estimate your monthly loan payment for personal loans, home loans, car loans, and more across India.</p>
-    </div>
+  <section id="aboutSection">
+    <h2>About</h2>
+    <p id="aboutText"></p>
+  </section>
 </main>
 
 <footer>
-    &copy; 2025 Loan EMI Calculator - India
+  &copy; 2025 Loan Calculators India
 </footer>
 
 <script>
-    const translations = {
-        en: {
-            title: "Loan EMI Calculator",
-            loanAmount: "Loan Amount (₹):",
-            interestRate: "Annual Interest Rate (%):",
-            tenure: "Loan Tenure:",
-            tenureType: "Tenure Type:",
-            months: "Months",
-            years: "Years",
-            calculate: "Calculate EMI",
-            emi: "EMI per month: ₹",
-            interest: "Total Interest: ₹",
-            payment: "Total Payment: ₹",
-            howToUseTitle: "How to Use",
-            howToUseText: "Enter your loan details, select tenure type, and click ‘Calculate EMI’ to see results.",
-            aboutTitle: "About",
-            aboutText: "This free EMI calculator helps you estimate your monthly loan payment for personal loans, home loans, car loans, and more across India."
-        },
-        hi: {
-            title: "ऋण ईएमआई कैलकुलेटर",
-            loanAmount: "ऋण राशि (₹):",
-            interestRate: "वार्षिक ब्याज दर (%):",
-            tenure: "ऋण अवधि:",
-            tenureType: "अवधि प्रकार:",
-            months: "महीने",
-            years: "साल",
-            calculate: "ईएमआई गणना करें",
-            emi: "प्रति माह ईएमआई: ₹",
-            interest: "कुल ब्याज: ₹",
-            payment: "कुल भुगतान: ₹",
-            howToUseTitle: "कैसे उपयोग करें",
-            howToUseText: "ऋण विवरण दर्ज करें, अवधि प्रकार चुनें और ‘ईएमआई गणना करें’ पर क्लिक करें।",
-            aboutTitle: "हमारे बारे में",
-            aboutText: "यह मुफ्त ईएमआई कैलकुलेटर आपको व्यक्तिगत ऋण, होम लोन, कार लोन और अन्य के लिए मासिक भुगतान का अनुमान लगाने में मदद करता है।"
-        },
-        mr: {
-            title: "कर्ज ईएमआय कॅलक्युलेटर",
-            loanAmount: "कर्ज रक्कम (₹):",
-            interestRate: "वार्षिक व्याज दर (%):",
-            tenure: "कर्ज कालावधी:",
-            tenureType: "कालावधी प्रकार:",
-            months: "महिने",
-            years: "वर्षे",
-            calculate: "ईएमआय काढा",
-            emi: "दर महिना ईएमआय: ₹",
-            interest: "एकूण व्याज: ₹",
-            payment: "एकूण पेमेंट: ₹",
-            howToUseTitle: "कसे वापरायचे",
-            howToUseText: "कर्जाची माहिती भरा, कालावधी प्रकार निवडा आणि ‘ईएमआय काढा’ वर क्लिक करा.",
-            aboutTitle: "आमच्याबद्दल",
-            aboutText: "हा मोफत ईएमआय कॅलक्युलेटर तुम्हाला वैयक्तिक, घर, वाहन कर्जांसाठी मासिक पेमेंटचा अंदाज लावण्यात मदत करतो."
-        }
-    };
+  // Language codes - add the 22 official languages + English
+  const languages = {
+    en: "English",
+    hi: "हिन्दी",
+    mr: "मराठी",
+    bn: "বাংলা",
+    ta: "தமிழ்",
+    te: "తెలుగు",
+    kn: "ಕನ್ನಡ",
+    gu: "ગુજરાતી",
+    or: "ଓଡ଼ିଆ",
+    pa: "ਪੰਜਾਬੀ",
+    as: "অসমীয়া",
+    ml: "മലയാളം",
+    ur: "اردو",
+    sd: "سنڌي",
+    ks: "कश्मीरी",
+    ne: "नेपाली",
+    doi: "डोगरी",
+    kon: "कोंकणी",
+    bho: "भोजपुरी",
+    sat: "संताली",
+    ba: "बोडो",
+    mai: "मैथिली",
+    sa: "संस्कृतम्"
+  };
 
-    const elems = {
-        titleText: document.getElementById("titleText"),
-        loanAmountLabel: document.getElementById("loanAmountLabel"),
-        interestRateLabel: document.getElementById("interestRateLabel"),
-        tenureLabel: document.getElementById("tenureLabel"),
-        tenureTypeLabel: document.getElementById("tenureTypeLabel"),
-        tenureType: document.getElementById("tenureType"),
-        calculateBtn: document.getElementById("calculateBtn"),
-        emiResult: document.getElementById("emiResult"),
-        interestResult: document.getElementById("interestResult"),
-        totalPaymentResult: document.getElementById("totalPaymentResult"),
-        howToUseTitle: document.getElementById("howToUseTitle"),
-        howToUseText: document.getElementById("howToUseText"),
-        aboutTitle: document.getElementById("aboutTitle"),
-        aboutText: document.getElementById("aboutText"),
-        languageSwitcher: document.getElementById("languageSwitcher")
-    };
+  // Loan types with friendly names
+  const loanTypes = {
+    personal: "Personal Loan EMI Calculator",
+    home: "Home Loan EMI Calculator",
+    car: "Car Loan EMI Calculator",
+    education: "Education Loan EMI Calculator",
+    business: "Business Loan EMI Calculator"
+    // Add other calculators as needed
+  };
 
-    function updateTranslations(lang) {
-        const t = translations[lang];
-        elems.titleText.textContent = t.title;
-        elems.loanAmountLabel.textContent = t.loanAmount;
-        elems.interestRateLabel.textContent = t.interestRate;
-        elems.tenureLabel.textContent = t.tenure;
-        elems.tenureTypeLabel.textContent = t.tenureType;
-        elems.tenureType.options[0].text = t.months;
-        elems.tenureType.options[1].text = t.years;
-        elems.calculateBtn.textContent = t.calculate;
-        elems.emiResult.textContent = t.emi + "0";
-        elems.interestResult.textContent = t.interest + "0";
-        elems.totalPaymentResult.textContent = t.payment + "0";
-        elems.howToUseTitle.textContent = t.howToUseTitle;
-        elems.howToUseText.textContent = t.howToUseText;
-        elems.aboutTitle.textContent = t.aboutTitle;
-        elems.aboutText.textContent = t.aboutText;
+  const translations = {
+    en: {
+      howToUseText: "Enter your loan amount, interest rate, tenure, and select the tenure type. Click 'Calculate' to see EMI, total interest, and total payment.",
+      aboutText: "This website provides multiple loan EMI calculators with multi-language support across India's major languages."
+    },
+    hi: {
+      howToUseText: "अपनी कर्ज राशि, ब्याज दर, अवधि और अवधि प्रकार दर्ज करें। 'गणना करें' पर क्लिक करें ताकि ईएमआई, कुल ब्याज और कुल भुगतान देखें।",
+      aboutText: "यह वेबसाइट भारत की प्रमुख भाषाओं में बहुभाषी समर्थन के साथ विभिन्न कर्ज emi कैलकुलेटर प्रदान करती है।"
+    },
+    mr: {
+      howToUseText: "आपली कर्ज रक्कम, व्याज दर, कालावधी आणि कालावधीचा प्रकार प्रविष्ट करा. 'गणना करा' वर क्लिक करा आणि ईएमआय, एकूण व्याज आणि एकूण पेमेंट पाहा.",
+      aboutText: "ही वेबसाइट भारतातील प्रमुख भाषा विविध EMI कॅल्क्युलेटर बहुभाषिक समर्थनासह प्रदान करते."
+    }
+    // Add translations for other languages similarly (can start with English and Hindi/Marathi fully, then expand)
+  };
+
+  // Populate Language Selector
+  const langSelector = document.getElementById('langSelector');
+  for (const [code, name] of Object.entries(languages)) {
+    const opt = document.createElement('option');
+    opt.value = code; opt.textContent = name;
+    langSelector.appendChild(opt);
+  }
+  langSelector.value = 'en'; // default
+
+  // Populate Loan Type Selector
+  const loanTypeSelector = document.getElementById('loanTypeSelector');
+  for (const [key, val] of Object.entries(loanTypes)) {
+    const opt = document.createElement('option');
+    opt.value = key; opt.textContent = val;
+    loanTypeSelector.appendChild(opt);
+  }
+
+  const calculatorContainer = document.getElementById('calculatorContainer');
+  const resultContainer = document.getElementById('resultContainer');
+  const howToUseText = document.getElementById('howToUseText');
+  const aboutText = document.getElementById('aboutText');
+
+  // Render calculator UI for selected loan type (simplified generic form for demo)
+  function renderCalculator() {
+    const html = `
+      <label for="loanAmount">Loan Amount (₹):</label>
+      <input type="number" id="loanAmount" min="0" placeholder="Enter amount" />
+      
+      <label for="interestRate">Annual Interest Rate (%):</label>
+      <input type="number" id="interestRate" min="0" max="100" step="0.01" placeholder="Enter rate" />
+
+      <label for="tenure">Loan Tenure:</label>
+      <input type="number" id="tenure" min="1" placeholder="Enter number" />
+
+      <label for="tenureType">Tenure Type:</label>
+      <select id="tenureType">
+        <option value="months">Months</option>
+        <option value="years" selected>Years</option>
+      </select>
+
+      <button id="calculateBtn">Calculate</button>
+    `;
+    calculatorContainer.innerHTML = html;
+
+    document.getElementById('calculateBtn').addEventListener('click', calculateEMI);
+  }
+
+  // EMI Calculation logic (reused for all loan types)
+  function calculateEMI() {
+    const lang = langSelector.value;
+    const t = translations[lang] || translations['en'];
+
+    const amount = parseFloat(document.getElementById('loanAmount').value);
+    const rate = parseFloat(document.getElementById('interestRate').value);
+    let tenure = parseInt(document.getElementById('tenure').value);
+    const tenureType = document.getElementById('tenureType').value;
+
+    if (isNaN(amount) || amount <= 0 || isNaN(rate) || rate < 0 || rate > 100 || isNaN(tenure) || tenure <= 0) {
+      alert(lang === 'hi' ? 'कृपया सभी मान्य और सकारात्मक संख्याएं दर्ज करें।' : lang === 'mr' ? 'कृपया सर्व वैध सकारात्मक संख्या प्रविष्ट करा.' : 'Please enter valid positive numbers for all fields.');
+      return;
     }
 
-    elems.languageSwitcher.addEventListener("change", function () {
-        updateTranslations(this.value);
-    });
+    if (tenureType === 'years') tenure *= 12;
 
-    elems.calculateBtn.addEventListener("click", function () {
-        let amount = parseFloat(document.getElementById("loanAmount").value);
-        let rate = parseFloat(document.getElementById("interestRate").value);
-        let tenure = parseInt(document.getElementById("tenure").value);
-        let tenureType = elems.tenureType.value;
-        const lang = elems.languageSwitcher.value;
-        const t = translations[lang];
+    const monthlyRate = rate / 12 / 100;
+    let emi = monthlyRate === 0 ? (amount / tenure) : (amount * monthlyRate * Math.pow(1 + monthlyRate, tenure)) / (Math.pow(1 + monthlyRate, tenure) - 1);
 
-        if (isNaN(amount) || amount <= 0 ||
-            isNaN(rate) || rate < 0 || rate > 100 ||
-            isNaN(tenure) || tenure <= 0) {
-            alert("Please enter valid positive numbers for all fields.");
-            return;
-        }
+    const totalPayment = emi * tenure;
+    const totalInterest = totalPayment - amount;
 
-        if (tenureType === "years") tenure *= 12;
+    resultContainer.innerHTML = `
+      <p>${lang === 'hi' ? 'प्रति माह ईएमआई' : lang === 'mr' ? 'दर महिना ईएमआय' : 'EMI per month'}: ₹${emi.toFixed(2)}</p>
+      <p>${lang === 'hi' ? 'कुल ब्याज' : lang === 'mr' ? 'एकूण व्याज' : 'Total Interest'}: ₹${totalInterest.toFixed(2)}</p>
+      <p>${lang === 'hi' ? 'कुल भुगतान' : lang === 'mr' ? 'एकूण पेमेंट' : 'Total Payment'}: ₹${totalPayment.toFixed(2)}</p>
+    `;
+  }
 
-        const monthlyRate = rate / 12 / 100;
-        let emi;
-        if (monthlyRate === 0) {
-            emi = amount / tenure;
-        } else {
-            emi = (amount * monthlyRate * Math.pow(1 + monthlyRate, tenure)) / (Math.pow(1 + monthlyRate, tenure) - 1);
-        }
-        const totalPayment = emi * tenure;
-        const totalInterest = totalPayment - amount;
+  // Update info texts based on language
+  function updateTexts() {
+    const lang = langSelector.value;
+    const t = translations[lang] || translations['en'];
+    howToUseText.textContent = t.howToUseText;
+    aboutText.textContent = t.aboutText;
+  }
 
-        elems.emiResult.textContent = t.emi + emi.toFixed(2);
-        elems.interestResult.textContent = t.interest + totalInterest.toFixed(2);
-        elems.totalPaymentResult.textContent = t.payment + totalPayment.toFixed(2);
-    });
+  // On language change, update UI labels and instructions
+  langSelector.addEventListener('change', () => {
+    renderCalculator();
+    updateTexts();
+    resultContainer.innerHTML = '';
+  });
 
-    // Initialize default language translations on load
-    updateTranslations("en");
+  // On loan type change, update calculator
+  loanTypeSelector.addEventListener('change', () => {
+    renderCalculator();
+    resultContainer.innerHTML = '';
+  });
+
+  // Initial render
+  renderCalculator();
+  updateTexts();
 </script>
 </body>
 </html>
